@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   def index
+    @blogs = Blog.all
   end
 
   def show
@@ -21,6 +22,24 @@ class BlogsController < ApplicationController
   end
 
   def edit
+    @blog = Blog.find(params[:id])
+  end
+
+  def update
+    @blog = Blog.find(params[:id])
+
+    if @blog.update(blog_params)
+      redirect_to @blog
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+     @blog = Blog.find(params[:id])
+
+     @blog.destroy
+     redirect_to :action => index
   end
 
   private
