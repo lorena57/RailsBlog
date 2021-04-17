@@ -1,7 +1,10 @@
 <div class="container">
     <div class="row">
+
+<div class="col-md-10">
+<div class="row">
         <% @blogs.each do |blog| %>
-            <div class="col-md-4">
+            <div class="col-md-6">
             <div class="card mt-3">
             <div class="card-body">
                 <h3><%= link_to blog.title, blog_path(blog.id) %></h3>
@@ -10,10 +13,20 @@
             </div>
             </div>
         <% end %>
+</div>
+</div>
 
+<div class="col-md-2">
         <% @categories.each do |category| %>
         <%= link_to category.category,  blogs_path(:cate => category.id )%>
         <% end %>
+</div>
+
+
+
+
+
+
     </div>
 </div>
 
